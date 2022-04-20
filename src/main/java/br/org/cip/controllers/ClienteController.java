@@ -7,9 +7,10 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.org.cip.entities.Cliente;
@@ -22,12 +23,12 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@PostMapping
 	public ResponseEntity<Cliente> incluirCliente(@Valid @RequestBody Cliente c) {
 		return new ResponseEntity<Cliente>(clienteService.salvar(c), HttpStatus.CREATED);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public ResponseEntity<List<Cliente>> buscarTodosOsClientes() {
 		return new ResponseEntity<List<Cliente>>(clienteService.buscarTodosOsClientes(), HttpStatus.OK);
 	}
