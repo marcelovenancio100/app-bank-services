@@ -28,8 +28,8 @@ public class ClienteController {
 		return new ResponseEntity<Cliente>(clienteService.salvar(c), HttpStatus.CREATED);
 	}
 	
-	@GetMapping
-	public ResponseEntity<List<Cliente>> buscarTodosOsClientes() {
+	@GetMapping()
+	public ResponseEntity<List<Cliente>> buscarTodosOsClientes(Long id) {
 		return new ResponseEntity<List<Cliente>>(clienteService.buscarTodosOsClientes(), HttpStatus.OK);
 	}
 }
